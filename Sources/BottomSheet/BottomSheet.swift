@@ -34,6 +34,7 @@ public struct BottomSheet<Content: View>: View {
         topBarBackgroundColor: Color = Color(.systemBackground),
         contentBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool,
+        barrierEnabled: Bool
         @ViewBuilder content: () -> Content
     ) {
         self.topBarBackgroundColor = topBarBackgroundColor
@@ -41,6 +42,7 @@ public struct BottomSheet<Content: View>: View {
         self._isPresented = isPresented
         self.height = height
         self.topBarHeight = topBarHeight
+        self.barrierEnabled = barrierEnabled
         if let topBarCornerRadius = topBarCornerRadius {
             self.topBarCornerRadius = topBarCornerRadius
         } else {
