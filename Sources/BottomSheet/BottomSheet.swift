@@ -24,6 +24,7 @@ public struct BottomSheet<Content: View>: View {
     private let contentBackgroundColor: Color
     private let topBarBackgroundColor: Color
     private let showTopIndicator: Bool
+    private let barrierEnabled : Bool
     
     public init(
         isPresented: Binding<Bool>,
@@ -76,6 +77,11 @@ public struct BottomSheet<Content: View>: View {
             .opacity(grayBackgroundOpacity)
             .edgesIgnoringSafeArea(.all)
             .animation(.interactiveSpring())
+            .onTapGesture {
+                if self.barrierEnabled {
+                    self.isPresented = false
+                }
+            }
     }
     
     fileprivate func topBar(geometry: GeometryProxy) -> some View {
